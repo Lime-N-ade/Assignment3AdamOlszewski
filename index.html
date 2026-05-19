@@ -7,38 +7,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="style.css">
-  <!-- import jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="index.js"></script>
 </head>
 
 <body>
-  <div id="game_grid">
-    <div class="card">
-      <img id="img1" class="front_face" src="001.png" alt="">
-      <img class="back_face" src="back.webp" alt="">
-    </div>
-    <div class="card">
-      <img id="img2" class="front_face" src="002.png" alt="">
-      <img class="back_face" src="back.webp" alt="">
-    </div>
-    <div class="card">
-      <img id="img3" class="front_face" src="003.png" alt="">
-      <img class="back_face" src="back.webp" alt="">
-    </div>
-    <div class="card">
-      <img id="img4" class="front_face" src="001.png" alt="">
-      <img class="back_face" src="back.webp" alt="">
-    </div>
-    <div class="card">
-      <img id="img5" class="front_face" src="002.png" alt="">
-      <img class="back_face" src="back.webp" alt="">
-    </div>
-    <div class="card">
-      <img id="img6" class="front_face" src="003.png" alt="">
-      <img class="back_face" src="back.webp" alt="">
+  <div style="display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; margin: 10px;">
+    <h1 style="margin: 0;">Pokemon Memory Game</h1>
+    <div>
+      <button class="size-btn" data-size="2x3">3×2</button>
+      <button class="size-btn" data-size="4x3">4×3</button>
+      <button class="size-btn" data-size="5x4">5×4</button>
     </div>
   </div>
-</body>
+  <p style="text-align: center; margin: 5px 0 10px;">Click on a card to flip it. Try to find all the matching pairs!</p>
+  <div id="game_grid"></div>
+  <p id="win-msg" style="text-align: center; font-size: 24px; color: green;"></p>
+<script src="index.js"></script>
 
 </html>
