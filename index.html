@@ -10,18 +10,34 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
-<body>
-  <div style="display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; margin: 10px;">
-    <h1 style="margin: 0;">Pokemon Memory Game</h1>
-    <div>
+<body class="theme-forest">
+  <div style="display: flex; align-items: center; justify-content: center; margin: 10px; position: relative;">
+    <div style="position: absolute; left: 0;">
+      <button class="theme-btn" data-theme="theme-forest">Forest</button>
+      <button class="theme-btn" data-theme="theme-ocean">Ocean</button>
+      <button class="theme-btn" data-theme="theme-sunset">Sunset</button>
+      <button class="theme-btn" data-theme="theme-lavender">Lavender</button>
+    </div>
+    <div class="wave-container">
+      <p class="wave-text" data-text="Pokemon Memory Game"></p>
+    </div>
+    <div style="position: absolute; right: 0; display: flex; align-items: center; gap: 4px;">
       <button class="size-btn" data-size="2x3">3×2</button>
       <button class="size-btn" data-size="4x3">4×3</button>
       <button class="size-btn" data-size="5x4">5×4</button>
     </div>
   </div>
+  <p id="moves-counter" style="text-align: center; margin: 5px 0;">Moves: 0</p>
   <p style="text-align: center; margin: 5px 0 10px;">Click on a card to flip it. Try to find all the matching pairs!</p>
   <div id="game_grid"></div>
-  <p id="win-msg" style="text-align: center; font-size: 24px; color: green;"></p>
-<script src="index.js"></script>
+  <p id="win-msg"></p>
+  <div style="text-align: center; margin: 10px;">
+    <button id="start-btn">Start</button>
+    <button id="reset-btn">Reset</button>
+    <button id="powerup-btn">Cheat</button>
+  </div>
+  <script src="index.js"></script>
+  <script src="wavetext.js"></script>
+</body>
 
 </html>

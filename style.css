@@ -1,5 +1,8 @@
 body {
   margin: 0px;
+  font-family: 'Georgia', serif;
+  background-color: #f5f0e8;
+  color: #2c2c2c;
 }
 
 #game_grid {
@@ -8,10 +11,11 @@ body {
   gap: 10px;
   width: fit-content;
   margin: 0 auto;
-  border: 4px solid black;
+  border: 3px solid #2c2c2c;
   border-radius: 10px;
+  padding: 10px;
+  background-color: #ebe5d5;
 }
-
 
 .card {
   width: 33.3%;
@@ -21,9 +25,9 @@ body {
   transform-style: preserve-3d;
 }
 
-
 img {
-  width: 100%
+  width: 100%;
+  border-radius: 8px;
 }
 
 .front_face,
@@ -32,28 +36,140 @@ img {
   backface-visibility: hidden;
 }
 
-
 .flip {
   transform: rotateY(180deg);
 }
-
 
 .front_face {
   transform: rotateY(180deg);
 }
 
 .size-btn {
-  margin: 10px;
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: purple;
-  color: white;
-  border: none;
+  margin: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-family: 'Georgia', serif;
+  background-color: #f5f0e8;
+  color: #2c2c2c;
   cursor: pointer;
-  border: 3px solid black;
-  border-radius: 5px;
+  border: 2px solid #2c2c2c;
+  border-radius: 6px;
+  transition: background-color 0.2s, transform 0.1s;
 }
 
 .size-btn:hover {
-  background-color: #6a0dad;
+  background-color: #ddd5c0;
+  transform: translateY(-1px);
+}
+
+.size-btn:active {
+  transform: translateY(1px);
+}
+
+.theme-btn {
+  margin: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-family: 'Georgia', serif;
+  color: #2c2c2c;
+  cursor: pointer;
+  border: 2px solid #2c2c2c;
+  border-radius: 6px;
+  background-color: transparent;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.theme-btn:hover {
+  background-color: #ddd5c0;
+  transform: translateY(-1px);
+}
+
+.wave-container {
+  perspective: 1000px;
+}
+
+.wave-text {
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: 'Georgia', serif;
+  color: #2c2c2c;
+  text-shadow: none;
+  position: relative;
+  display: inline-block;
+}
+
+.char {
+  display: inline-block;
+  transition: transform 0.3s ease-out;
+}
+
+#win-msg {
+  font-family: 'Georgia', serif;
+  font-size: 22px;
+  color: #3a7d44;
+  text-align: center;
+}
+
+p {
+  color: #555;
+  font-size: 15px;
+}
+
+/* themes */
+body.theme-forest {
+  background-color: #e8f0e0;
+  color: #2c3e2d;
+}
+body.theme-forest .wave-text { color: #2c3e2d; text-shadow: none; }
+body.theme-forest .size-btn, body.theme-forest .theme-btn { border-color: #2c3e2d; color: #2c3e2d; }
+body.theme-forest .size-btn:hover, body.theme-forest .theme-btn:hover { background-color: #c8d8b8; }
+body.theme-forest #game_grid { border-color: #2c3e2d; background-color: #d8e8c8; }
+body.theme-forest p { color: #4a6e4b; }
+
+body.theme-ocean {
+  background-color: #e0eef5;
+  color: #1a3a4a;
+}
+body.theme-ocean .wave-text { color: #1a3a4a; text-shadow: none; }
+body.theme-ocean .size-btn, body.theme-ocean .theme-btn { border-color: #1a3a4a; color: #1a3a4a; }
+body.theme-ocean .size-btn:hover, body.theme-ocean .theme-btn:hover { background-color: #b8d4e4; }
+body.theme-ocean #game_grid { border-color: #1a3a4a; background-color: #c8dde8; }
+body.theme-ocean p { color: #2a5a6a; }
+
+body.theme-sunset {
+  background-color: #fdf0e0;
+  color: #4a2010;
+}
+body.theme-sunset .wave-text { color: #4a2010; text-shadow: none; }
+body.theme-sunset .size-btn, body.theme-sunset .theme-btn { border-color: #4a2010; color: #4a2010; }
+body.theme-sunset .size-btn:hover, body.theme-sunset .theme-btn:hover { background-color: #f0c898; }
+body.theme-sunset #game_grid { border-color: #4a2010; background-color: #f5dfc0; }
+body.theme-sunset p { color: #7a4020; }
+
+body.theme-lavender {
+  background-color: #f0eaf8;
+  color: #3a2050;
+}
+body.theme-lavender .wave-text { color: #3a2050; text-shadow: none; }
+body.theme-lavender .size-btn, body.theme-lavender .theme-btn { border-color: #3a2050; color: #3a2050; }
+body.theme-lavender .size-btn:hover, body.theme-lavender .theme-btn:hover { background-color: #d8c0f0; }
+body.theme-lavender #game_grid { border-color: #3a2050; background-color: #e4d4f4; }
+body.theme-lavender p { color: #5a3080; }
+
+#start-btn, #reset-btn {
+  margin: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-family: 'Georgia', serif;
+  background-color: transparent;
+  color: #2c2c2c;
+  cursor: pointer;
+  border: 2px solid #2c2c2c;
+  border-radius: 6px;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+#start-btn:hover, #reset-btn:hover {
+  background-color: #ddd5c0;
+  transform: translateY(-1px);
 }

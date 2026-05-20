@@ -46,6 +46,21 @@ function buildGrid(cards, cols, cardSize) {
   });
 }
 
+function powerup() {
+  document.getElementById("powerup-btn").addEventListener("click", () => {
+    state.locked = true;
+    const cards = document.querySelectorAll(".card:not(.matched)");
+    cards.forEach(card => card.classList.add("flip"));
+    setTimeout(() => {
+      cards.forEach(card => {
+        if (!card.classList.contains("matched")) card.classList.remove("flip");
+      });
+      state.flipped = [];
+      state.locked = false;
+    }, 1000);
+  });
+}
+
 function onCardClick(card) {
   if (state.locked) return;
   if (card.classList.contains("flip")) return;
@@ -57,6 +72,7 @@ function onCardClick(card) {
   if (state.flipped.length === 2) {
     state.locked = true;
     state.moves++;
+    document.getElementById("moves-counter").textContent = `Moves: ${state.moves}`;
 
     const [a, b] = state.flipped;
     if (a.dataset.pokeid === b.dataset.pokeid) {
@@ -67,7 +83,7 @@ function onCardClick(card) {
       state.locked = false;
       if (state.pairs === state.totalPairs) {
         setTimeout(() => {
-          document.getElementById("win-msg").textContent = `You won in ${state.moves} moves!`;
+          document.getElementById("win-msg").textContent = `You won in only ${state.moves} moves!`;
         }, 300);
       }
     } else {
@@ -83,6 +99,7 @@ function onCardClick(card) {
 
 async function init(sizeKey = state.activeSize) {
   document.getElementById("win-msg").textContent = "";
+  document.getElementById("moves-counter").textContent = "Moves: 0";
   const { cols, pairs, cardSize } = SIZES[sizeKey];
   state = { activeSize: sizeKey, flipped: [], locked: false, moves: 0, pairs: 0, totalPairs: pairs };
 
@@ -95,5 +112,22 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.addEventListener("click", () => init(btn.dataset.size));
   });
 
+  document.querySelectorAll(".theme-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.body.className = btn.dataset.theme;
+    });
+  });
+
+  document.getElementById("start-btn").addEventListener("click", () => {
+    init();
+    document.getElementById("start-btn").disabled = true;
+  });
+
+  document.getElementById("reset-btn").addEventListener("click", () => {
+    init();
+    document.getElementById("start-btn").disabled = false;
+  });
+
+  powerup();
   init();
 });
