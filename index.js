@@ -39,7 +39,7 @@ function buildGrid(cards, cols, cardSize) {
     card.style.height = `${cardSize}px`;
     card.innerHTML = `
       <img id="img${index}" class="front_face" src="${pokemon.image}" alt="${pokemon.name}">
-      <img class="back_face" src="back.webp" alt="">
+      <img class="back_face" src="./public/back.webp" alt="">
     `;
     card.addEventListener("click", () => onCardClick(card));
     grid.appendChild(card);
